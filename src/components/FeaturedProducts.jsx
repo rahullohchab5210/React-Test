@@ -9,22 +9,9 @@ function FeaturedProducts() {
     
         const sliderRef = React.useRef(null);
 
-    // const handleAddToCart = (product) => {
-    //     let existing = JSON.parse(localStorage.getItem("Products")) || [];
-    //     existing.push(product);
-    //     localStorage.setItem("Products", JSON.stringify(existing));
-    // };
-
-    // const handleAddToCart = (product) => {
-    //     let existing = JSON.parse(localStorage.getItem("Products")) || [];
-    //     existing.push(product);
-    //     localStorage.setItem("Products", JSON.stringify(existing));
-    // };
-
     const handleAddToCart = (item) => {
         let cart = JSON.parse(localStorage.getItem("Products")) || [];
-
-        // Add new product
+        
         cart.push({
             productName: item.productName,
             price: item.price,

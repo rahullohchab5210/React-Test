@@ -32,9 +32,9 @@ function OurService() {
     ];
 
     return (
-        <div className='mt-[140px]'>
+        <div className='mt-[140px] max-sm:mt-[80px]'>
             <div className="max-w-[1140px] mx-auto px-3 w-full">
-                <h3 className='text-center font-semibold text-[48px] leading-[100%] tracking-[0%] pb-[60px] max-sm:text-[32px]'>Our Service Promise</h3>
+                <h3 className='text-center font-semibold text-[48px] leading-[100%] tracking-[0%] pb-[60px] max-sm:text-[32px] max-sm:pb-[35px]'>Our Service Promise</h3>
                 <div className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3 gap-[124px] max-lg:gap-[60px] relative">
                     {SERVICE_DATA.map((item, i) => {
                         return <div key={i} className='flex flex-col items-center w-full'>

@@ -13,6 +13,7 @@ import Footer from '../components/Footer'
 function Home() {
     return (
         <>
+            <div className='max-w-360 items-center  mx-auto'> 
             <Navbar />
             <Header />
             <FeaturedProducts />
@@ -22,7 +23,8 @@ function Home() {
             <FromTheBlog />
             <Accordian />
             <OurNewsletter />
-            <Footer/>
+                <Footer />
+            </div>
         </>
     )
 }

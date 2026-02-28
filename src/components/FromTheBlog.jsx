@@ -24,17 +24,17 @@ function FromTheBlog() {
     ];
 
     return (
-        <div className='mt-[140px]'>
+        <div className='mt-[140px] max-sm:mt-[80px]'>
             <div className='max-w-[1140px] px-3 mx-auto'>
-                <div className='flex flex-col gap-[50px]'>
+                <div className='flex flex-col gap-[50px] max-sm:gap-[25px]'>
                     <div className='flex flex-row justify-between items-center max-sm:flex-col max-sm:gap-y-[10px]'>
-                        <h3 className='font-semibold text-[48px] leading-[100%] tracking-[0%] text-[#000000]'>From The Blog</h3>
+                        <h3 className='font-semibold text-[48px] leading-[100%] tracking-[0%] text-[#000000] max-sm:text-[40px]'>From The Blog</h3>
                         <Button className="px-[26px] py-[16px] text-[20px] font-medium "
                             text={"view All Blogs"}
                         />
                     </div>
 
-                    <div className='flex flex-row -mx-3 flex-wrap max-lg:gap-y-[20px]'>
+                    <div className='flex flex-row -mx-3 flex-wrap max-lg:gap-y-[30px] '>
                         {CARD_DATA.map((card, i) => {
                             return <div key={i} className='w-full  md:w-[50%] lg:w-[33.33%] px-3'>
                                 <div>

@@ -14,7 +14,7 @@ const Accordian = () => {
     const toggle = (i) => setActiveIndex(prev => prev === i ? null : i)
 
     return (
-        <div className='flex flex-col items-center justify-center mt-[140px] lg:px-35 px-5'>
+        <div className='flex flex-col items-center justify-center mt-[140px] max-sm:mt-[80px] lg:px-35 px-5'>
             <h1 className='text-5xl font-semibold text-center'>Frequently Asked Questions</h1>
             <p className='text-[16px] font-normal text-[#414143] mt-2 sm:mt-3 md:mt-4 text-center max-w-2xl'>Real Questions. Expert Answers. Total Confidence.</p>
             <div className='flex flex-col space-y-3 sm:space-y-4 md:space-y-5 mt-8 sm:mt-10 md:mt-12 items-center justify-center w-full'>

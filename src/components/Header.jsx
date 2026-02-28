@@ -36,8 +36,11 @@ function Header() {
     ];
     return (
         <Carousel
-            className="  w-full  mx-auto relative"
+            className=" w-full max-w-[1440px] mx-auto relative"
             autoPlay
+            showArrows={false}
+            showStatus={false}
+            show
             showIndicators={false}
             infiniteLoop
             showThumbs={false}
@@ -49,10 +52,10 @@ function Header() {
                     <img
                         src={item.bgImage}
                         alt={index}
-                        className="h-191.75 object-center object-cover "
+                        className="h-191.75 object-center object-cover w-full  "
                     />
-                    <div></div>
-                    <div className="absolute flex flex-col lg:items-start items-center lg:text-left h-full justify-center lg:top-10 text-white lg:ml-[190px] max-w-149.5 text-center ">
+                     
+                    <div className="absolute flex flex-col lg:items-start items-center lg:text-left h-full justify-center lg:top-10 text-white lg:ml-[150px] max-w-149.5 text-center ">
                         <h1 className="md:text-2xl text-xl font-normal tracking-wider  ">
                             {item.title}
                         </h1>
@@ -77,21 +80,5 @@ export default Header;
 
 
 
+
  
-
-
-
-
-
-// <div className="bg-[url('./assets/images/png/header.png')] bg-no-repeat bg-cover  w-full min-h-screen relative">
-//     <div className='max-w-[1140px] px-3 mx-auto w-full'>
-//         <div className='flex flex-col gap-[16px] text-white pt-[230px] '>
-//             <span className='font-normal text-[24px] leading-[100%] tracking-[18%] capitalize'>ELEVATE YOUR pRATICE</span>
-//             <h2 className='font-bold text-[66px] leading-[100%] tracking-[0%] capitalize'>N<span className='lowercase'>ATURE</span>-I<span className='lowecase'>NSPIRED</span></h2>
-//             <p className='max-w-[598px] font-normal text-[20px] leading-[165%] tracking-[0%] capitalize'>Eco-friendly yoga mats that blend-high performance with stunning, nature-inspired designs. Each product is thoughtfully crafted to elevate your yoga practice.</p>
-//         </div>
-//         <Button className="mt-[24px] px-[26px] py-[16px] text-[20px] font-medium "
-//             text={"Shop now"}
-//         />
-//     </div>
-// </div>

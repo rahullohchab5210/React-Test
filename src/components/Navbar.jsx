@@ -1,10 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(null);
+    const [cartCount, setCartCount] = useState(0);
 
     const navlinks = ["home", "conatct", "cart"]
+
+    useEffect(() => {
+        const items = JSON.parse(localStorage.getItem("Products")) || [];
+        setCartCount(items.length);
+
+        const updateCart = () => {
+            const items = JSON.parse(localStorage.getItem("Products")) || [];
+            setCartCount(items.length);
+        };
+
+        window.addEventListener("cartUpdated", updateCart);
+
+        return () => {
+            window.removeEventListener("cartUpdated", updateCart);
+        };
+    }, []);
+
+   
+
 
     return (
         <div className='w-full sticky top-0  transition-all duration-200 ease-in-out z-20'>
@@ -34,7 +54,7 @@ function Navbar() {
                                 <path d="M14.9775 16.2583C16.8926 16.2583 18.633 16.6211 19.8975 17.2114C21.1534 17.7978 21.9754 18.6274 21.9756 19.5767V21.9761H7.98047V19.5767C7.98065 18.6274 8.8026 17.7979 10.0586 17.2114C11.323 16.6211 13.0626 16.2583 14.9775 16.2583ZM14.9775 17.3774C13.3359 17.3775 11.8538 17.6337 10.7861 18.0444C10.2522 18.2499 9.8272 18.4926 9.53711 18.7563C9.2471 19.02 9.09972 19.2973 9.09961 19.5767V20.8569H20.8564V19.5767C20.8563 19.2973 20.709 19.02 20.4189 18.7563C20.1288 18.4925 19.7031 18.2499 19.1689 18.0444C18.1013 17.6338 16.6192 17.3774 14.9775 17.3774ZM14.9775 7.98096C15.8578 7.98096 16.7028 8.3302 17.3252 8.95264C17.9475 9.57499 18.2968 10.4192 18.2969 11.2993C18.2969 12.1794 17.9474 13.0236 17.3252 13.646C16.7028 14.2684 15.8578 14.6187 14.9775 14.6187C14.0974 14.6185 13.2532 14.2683 12.6309 13.646C12.0086 13.0236 11.6592 12.1794 11.6592 11.2993C11.6592 10.4192 12.0085 9.575 12.6309 8.95264C13.2532 8.3303 14.0974 7.98106 14.9775 7.98096ZM14.9775 9.1001C14.3944 9.1002 13.8352 9.33227 13.4229 9.74463C13.0105 10.157 12.7784 10.7162 12.7783 11.2993C12.7783 11.8826 13.0104 12.4425 13.4229 12.855C13.8352 13.2672 14.3945 13.4984 14.9775 13.4985C15.5608 13.4985 16.1208 13.2674 16.5332 12.855C16.9456 12.4425 17.1768 11.8826 17.1768 11.2993C17.1767 10.7162 16.9455 10.157 16.5332 9.74463C16.1208 9.33218 15.5608 9.1001 14.9775 9.1001Z" fill="#01C6B5" stroke="#01C6B5" stroke-width="0.2" />
                             </svg>
                             </span>
-                            <Link to={"/cart"}><svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <Link to={"/cart"} className='relative'><svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0.394163" y="2.39416" width="29.168" height="29.168" rx="14.584" stroke="#01C6B5" stroke-width="0.788326" />
                                 <g clip-path="url(#clip0_3001_800)">
                                     <path d="M11.3652 21.2139C11.775 21.2139 12.1682 21.3772 12.458 21.667C12.7476 21.9568 12.9102 22.3501 12.9102 22.7598C12.91 23.1693 12.7475 23.5619 12.458 23.8516C12.1682 24.1413 11.775 24.3046 11.3652 24.3047C10.9554 24.3047 10.5623 24.1414 10.2725 23.8516C9.9829 23.5619 9.81945 23.1693 9.81934 22.7598C9.81934 22.35 9.98275 21.9568 10.2725 21.667C10.5623 21.3772 10.9554 21.2139 11.3652 21.2139ZM17.8691 21.2139C18.2788 21.214 18.6722 21.3773 18.9619 21.667C19.2515 21.9567 19.4141 22.3501 19.4141 22.7598C19.414 23.1692 19.2513 23.5619 18.9619 23.8516C18.6722 24.1413 18.2788 24.3046 17.8691 24.3047C17.4593 24.3047 17.0662 24.1414 16.7764 23.8516C16.4867 23.5619 16.3234 23.1694 16.3232 22.7598C16.3232 22.3499 16.4866 21.9568 16.7764 21.667C17.0662 21.3772 17.4593 21.2139 17.8691 21.2139ZM11.3652 22.1367C11.2001 22.1367 11.0416 22.2026 10.9248 22.3193C10.8081 22.4361 10.7422 22.5947 10.7422 22.7598C10.7423 22.9247 10.8083 23.0826 10.9248 23.1992C11.0416 23.316 11.2001 23.3818 11.3652 23.3818C11.5303 23.3818 11.6889 23.316 11.8057 23.1992C11.9221 23.0826 11.9872 22.9246 11.9873 22.7598C11.9873 22.5948 11.9223 22.4361 11.8057 22.3193C11.6889 22.2026 11.5303 22.1368 11.3652 22.1367ZM17.8691 22.1367C17.704 22.1367 17.5455 22.2026 17.4287 22.3193C17.312 22.4361 17.2461 22.5946 17.2461 22.7598C17.2462 22.9247 17.3121 23.0826 17.4287 23.1992C17.5455 23.316 17.704 23.3818 17.8691 23.3818C18.0341 23.3817 18.1919 23.3159 18.3086 23.1992C18.4253 23.0826 18.4911 22.9247 18.4912 22.7598C18.4912 22.5946 18.4254 22.4361 18.3086 22.3193C18.1919 22.2027 18.0341 22.1368 17.8691 22.1367ZM8.54102 10.375L8.56641 10.4355L9.15527 11.8203H19.3145C19.724 11.8204 20.1166 11.9829 20.4062 12.2725C20.696 12.5623 20.8594 12.9554 20.8594 13.3652C20.8594 13.7492 20.7281 14.073 20.5137 14.335L18.4121 17.1436C18.1342 17.5373 17.6718 17.8007 17.1465 17.8008H11.333L10.8096 18.8604L10.7422 19.1553C10.7445 19.3171 10.8102 19.4723 10.9248 19.5869C11.0415 19.7035 11.2002 19.7686 11.3652 19.7686H19.4141V20.6914H11.3652C10.9555 20.6914 10.5622 20.5289 10.2725 20.2393C9.98274 19.9495 9.81941 19.5562 9.81934 19.1465C9.81911 18.8843 9.88578 18.6259 10.0127 18.3965L10.5107 17.3799L7.93066 11.2969H6.92969V10.375H8.54102ZM11.3008 16.8779H17.1465C17.3517 16.8778 17.5324 16.7784 17.6445 16.6289L19.8125 13.7383L19.8662 13.6553C19.9124 13.5679 19.9365 13.4686 19.9365 13.3652C19.9365 13.2001 19.8707 13.0416 19.7539 12.9248C19.6373 12.8083 19.4793 12.7423 19.3145 12.7422H9.54297L11.3008 16.8779Z" fill="#01C6B5" stroke="#01C6B5" stroke-width="0.2" />
@@ -47,6 +67,13 @@ function Navbar() {
                                     </clipPath>
                                 </defs>
                             </svg>
+                                
+                                {cartCount > 0 && (
+                                    <span className="absolute -top-2 -right-2 bg-red-600 text-white 
+                                        text-[14px] font-semibold px-2 py-[2px] rounded-full">
+                                        {cartCount}
+                                    </span>
+                                )}
                             </Link>
                         </div>
                     </div>
@@ -58,9 +85,9 @@ function Navbar() {
             <div className='w-full bg-[#01C6B5] py-[25px]'>
                 <div className='max-w-[1140px] px-3 mx-auto'>
                     <div className='flex items-center justify-between'>
-                        <a className='logo  font-normal text-[16px] leading-[100%] tracking-[0%] text-white'>
+                        <Link to={"/"} className='logo  font-normal text-[16px] leading-[100%] tracking-[0%] text-white'>
                             <img src="/assets/images/png/Logo_image.png" alt="logo" className='w-full' />
-                        </a>
+                        </Link>
                         <div className={`flex items-center menulist max-lg:justify-center gap-[36px] z-9  top-0 gap-6 max-sm:flex-col sm:flex-row transition-[right] duration-300  max-sm:h-full max-sm:w-full max-sm:bg-[#01C6B5] max-sm:fixed ${menuOpen === "show" ? 'right-0' : 'max-sm:-right-full'}`}>
                             {navlinks.map((item, i) => {
                                 return <Link key={i} href="#" to={item=== "cart" ? "/cart" : "/"} className='font-normal text-[16px] leading-[100%] tracking-[0%] text-white capitalize relative inline-block group' >{item}
@@ -73,9 +100,9 @@ function Navbar() {
                             onClick={() => setMenuOpen(menuOpen === "show" ? null : "show")}
                             className="flex flex-col justify-between h-5.5 w-7 bg-transparent border-0 ml-auto z-9 relative sm:hidden  cursor-pointer"
                         >
-                            <span className={`block w-full h-0.75 bg-[#01C8FF] rounded-sm transition-all duration-300 ease-in-out transform ${menuOpen === "show" ? "rotate-45 origin-left" : ""}`}></span>
-                            <span className={`block w-full h-0.75 bg-[#01C8FF] rounded-sm transition-all duration-300 ease-in-out ${menuOpen === "show" ? "opacity-0 -translate-x-10" : ""}`}></span>
-                            <span className={`block w-full h-0.75 bg-[#01C8FF] rounded-sm transition-all duration-300 ease-in-out transform ${menuOpen === "show" ? "-rotate-45 origin-left" : ""}`}></span>
+                            <span className={`block w-full h-0.75 bg-white rounded-sm transition-all duration-300 ease-in-out transform ${menuOpen === "show" ? "rotate-45 origin-left" : ""}`}></span>
+                            <span className={`block w-full h-0.75 bg-white rounded-sm transition-all duration-300 ease-in-out ${menuOpen === "show" ? "opacity-0 -translate-x-10" : ""}`}></span>
+                            <span className={`block w-full h-0.75 bg-white rounded-sm transition-all duration-300 ease-in-out transform ${menuOpen === "show" ? "-rotate-45 origin-left" : ""}`}></span>
                         </button>
                     </div>
                 </div>
