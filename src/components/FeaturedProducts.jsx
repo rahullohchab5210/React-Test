@@ -5,26 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 function FeaturedProducts() {
-
-    
+ 
         const sliderRef = React.useRef(null);
-
-    // const handleAddToCart = (product) => {
-    //     let existing = JSON.parse(localStorage.getItem("Products")) || [];
-    //     existing.push(product);
-    //     localStorage.setItem("Products", JSON.stringify(existing));
-    // };
-
-    // const handleAddToCart = (product) => {
-    //     let existing = JSON.parse(localStorage.getItem("Products")) || [];
-    //     existing.push(product);
-    //     localStorage.setItem("Products", JSON.stringify(existing));
-    // };
 
     const handleAddToCart = (item) => {
         let cart = JSON.parse(localStorage.getItem("Products")) || [];
-
-        // Add new product
+ 
         cart.push({
             productName: item.productName,
             price: item.price,
@@ -262,8 +248,6 @@ function FeaturedProducts() {
                                 </div>
                                 <h5 className='pt-[24px] text-center font-normal text-[24px] leading-[100%] tracking-[0%] text-[#000000]'>Foldable Yoga Mat</h5>
                             </div>
-
-                           
                             </Slider>
                     </div>
                 </div>
