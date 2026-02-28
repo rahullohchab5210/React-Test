@@ -70,7 +70,7 @@ const Categories = () => {
                             </div>
                         )}
                         <button
-                            className='absolute top-2 sm:top-3 right-2 sm:right-3 bg-white p-1.5 sm:p-2 rounded-full shadow-sm hover:scale-110 transition-transform z-10'
+                            className='cursor-pointer absolute top-2 sm:top-3 right-2 sm:right-3 bg-white p-1.5 sm:p-2 rounded-full shadow-sm hover:scale-110 transition-transform z-10'
                             onClick={() => toggleLike(index)}
                             aria-label='Toggle like'
                         >
